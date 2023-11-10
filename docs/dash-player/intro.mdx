@@ -1,0 +1,82 @@
+---
+sidebar_position: 1
+---
+import Link from "@docusaurus/Link";
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import {twMerge} from "tailwind-merge";
+
+export const HighlightItem = ({title, desc, className, link}) => {
+    return (
+        <div className={twMerge(
+            'border-2 relative rounded border-solid flex flex-col justify-center items-start overflow-hidden p-4 gap-2',
+            'border-neutral-600 dark:border-neutral-400',
+            'hover:border-neutral-300 transition-all duration-300',
+            'hover:dark:border-neutral-500 hover:dark:shadow-lg'
+            , className)}>
+            {link && <Link to={useBaseUrl(`/docs/dash-player/${link}`)} className={twMerge('absolute inset-0 z-10')}/>}
+            <div className={twMerge('text-xl font-bold')}>{title}</div>
+            <div className={twMerge('text-sm')}>{desc}</div>
+        </div>
+    )
+}
+
+export const BaseSkills = () => {
+    return (
+        <div className="grid grid-rows-auto grid-cols-1 md:grid-cols-2 gap-8 w-full">
+            <HighlightItem
+                title={'安装教程'}
+                desc={'DashPlayer 目前没有进行应用签名, 因此您在安装过程中可能会收到操作系统的警告, 这里是解决办法'}
+                link={'installation'}
+            />
+            <HighlightItem
+                title={'使用教程'}
+                desc={'这里是 DashPlayer 的基础使用方法'}
+                link={'usage'}
+            />
+            <HighlightItem
+                title='配置机器翻译'
+                desc={'这里是配置字幕翻译和查单词的教程'}
+                link={'machine-translation'}
+                className={twMerge('md:row-start-1 md:col-start-2 md:row-span-2')}>
+            </HighlightItem>
+        </div>
+    )
+}
+
+export const AdvanceSkills = () => {
+    //grid grid-flow-col grid-rows-2 grid-cols-2 gap-8 w-full
+    return (
+        <div className="grid grid-rows-auto grid-cols-1 md:grid-cols-2 gap-8 w-full">
+            <HighlightItem
+                title={'使用蓝牙手柄控制播放'}
+                desc={'观看视频时您可能要频繁使用快捷键, 蓝牙手柄比快捷键更方便'}
+                link={'use-bluetooth-game-controller'}
+            />
+            <HighlightItem
+                title={'为没有字幕的视频添加字幕'}
+                desc={'有些视频没有字幕，或者字幕不够好，可以使用人工智能字幕来生成字幕。'}
+                link={'ai-generate-subtitle'}
+            />
+            <HighlightItem
+                title='想播放在线视频怎么办?'
+                desc={'通过视频下载器下载视频, 然后使用 DashPlayer 播放'}
+                link={'download-video'}
+            />
+            <HighlightItem
+                title='同类软件推荐'
+                desc={'DashPlayer 目前专注于播放本地视频, 其他场景的播放器推荐'}
+                link={'software-recommendation'}
+            />
+        </div>
+    )
+}
+
+# DashPlayer
+
+## 入门教程
+
+<BaseSkills/>
+
+## 进阶教程
+
+<AdvanceSkills/>
