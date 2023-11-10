@@ -8,6 +8,7 @@ import {
     FeatureDescription, FeatureImage
 } from "@site/src/components/featureWrapper/FeatureItemWrapper";
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Footer from '@theme/Footer';
 
 const DashPlayer = () => {
     return (
@@ -39,7 +40,7 @@ const DashPlayer = () => {
                     <h1 className={twMerge('text-4xl font-bold text-center')}>DashPlayer</h1>
                     <img
                         className={twMerge('w-full md:max-w-screen-lg rounded-lg drop-shadow-xl shadow-black')}
-                        alt="screen capture" src="https://github.com/solidSpoon/DashPlayer/assets/39454841/95bef2b3-b4f2-4a3e-b884-e5987a2ee4d6"/>
+                        alt="screen capture" src={useBaseUrl('/img/dashplayer/screencapture.png')}/>
                 </div>
                 <FeatureItemWrapper>
                     <FeatureTitle>多种亮度不同的主题</FeatureTitle>
@@ -47,7 +48,7 @@ const DashPlayer = () => {
                         内置多款不同亮度的主题，完美适应您的学习环境。
                     </FeatureDescription>
                     <FeatureImage
-                        src="https://github.com/solidSpoon/DashPlayer/assets/39454841/75f9a9fc-ef1c-4141-80e4-0aa6c38fd70b"
+                        src={useBaseUrl('/img/dashplayer/theme.png')}
                         alt="DashPlayer Theme"/>
                 </FeatureItemWrapper>
                 <FeatureItemWrapper>
@@ -56,16 +57,17 @@ const DashPlayer = () => {
                         启动页面会展示您最近播放的视频，您可以随时继续观看。
                     </FeatureDescription>
                     <FeatureImage
-                        src="https://github.com/solidSpoon/DashPlayer/assets/39454841/aebb2661-0079-4ffb-b07f-0c5f531468ea"
+                        src={useBaseUrl('/img/dashplayer/history.png')}
                         alt="DashPlayer History"/>
                 </FeatureItemWrapper>
                 <FeatureItemWrapper>
                     <FeatureTitle>字幕翻译和单词翻译</FeatureTitle>
                     <FeatureDescription>
-                        字幕翻译相较于人工翻译更忠于原意，无论您的字幕是否包含人工翻译，DashPlayer 都会为您展示机器字幕。
+                        支持有道查词和腾讯字幕翻译。字幕翻译相较于人工翻译更忠于原意，无论您的字幕是否包含人工翻译，DashPlayer
+                        都会为您展示机器字幕。
                     </FeatureDescription>
                     <FeatureImage
-                        src="https://github.com/solidSpoon/DashPlayer/assets/39454841/0198d8c6-65f6-487c-ba65-e3b7b6cc1598"
+                        src={useBaseUrl('/img/dashplayer/translation.png')}
                         alt="translation"/>
                 </FeatureItemWrapper>
                 <FeatureItemWrapper>
@@ -74,14 +76,23 @@ const DashPlayer = () => {
                         启动页面会展示您最近播放的视频，您可以随时继续观看。
                     </FeatureDescription>
                     <FeatureImage
-                        src="https://github.com/solidSpoon/DashPlayer/assets/39454841/e9e7f41b-946f-426d-bab8-e1264cbac06b"
+                        src={useBaseUrl('/img/dashplayer/hidesubtitle.png')}
                         alt="DashPlayer History"/>
                 </FeatureItemWrapper>
                 <FeatureItemWrapper>
-                    <FeatureTitle>支持常见的视频格式</FeatureTitle>
+                    <FeatureTitle>全面的快捷键</FeatureTitle>
+                    <FeatureDescription>
+                        常用的快捷键都有，您可以在设置页面查看所有快捷键。
+                    </FeatureDescription>
+                    <FeatureImage
+                        src={useBaseUrl('/img/dashplayer/shortcut.png')}
+                        alt="DashPlayer History"/>
+                </FeatureItemWrapper>
+                <FeatureItemWrapper>
+                    <FeatureTitle>支持的视频 / 字幕格式</FeatureTitle>
                     <FeatureDescription>
                         <div className={twMerge('flex flex-wrap gap-3 max-w-md mx-auto text-center justify-center')}>
-                            {['MP4', 'WebM', 'TS', 'MP3'].map((item, index) => (
+                            {['MP4', 'WebM', 'WAV', 'srt'].map((item, index) => (
                                 <span
                                     className={twMerge('uppercase bg-neutral-300 text-neutral-700 px-2 py-1 rounded-lg font-medium')}
                                     key={index}>{item}</span>
@@ -91,6 +102,7 @@ const DashPlayer = () => {
                 </FeatureItemWrapper>
                 <div className={twMerge('w-full h-12')}/>
             </main>
+            <Footer/>
         </Layout>
     );
 
