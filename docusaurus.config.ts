@@ -103,7 +103,7 @@ const config: Config = {
                 },
                 {
                   label: 'Discord',
-                  href: 'https://disco rdapp.com/invite/docusaurus',
+                  href: 'https://discordapp.com/invite/docusaurus',
                 },
                 {
                   label: 'Twitter',

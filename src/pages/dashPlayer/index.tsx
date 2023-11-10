@@ -8,9 +8,10 @@ import {
     FeatureDescription, FeatureImage
 } from "@site/src/components/featureWrapper/FeatureItemWrapper";
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import Footer from '@theme/Footer';
+import useFooter from "@site/src/hooks/useFooter";
 
 const DashPlayer = () => {
+    useFooter();
     return (
         <Layout
             title={`DashPlayer`}
@@ -28,7 +29,7 @@ const DashPlayer = () => {
                     <div className={twMerge('flex gap-2')}>
                         <Link
                             className="button button--primary button--lg"
-                            to="/docs/dash-player/intro">
+                            to="/docs/dash-player/installation">
                             Download
                         </Link>
                         <Link
@@ -102,7 +103,6 @@ const DashPlayer = () => {
                 </FeatureItemWrapper>
                 <div className={twMerge('w-full h-12')}/>
             </main>
-            <Footer/>
         </Layout>
     );
 
