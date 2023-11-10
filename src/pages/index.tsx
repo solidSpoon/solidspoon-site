@@ -24,7 +24,7 @@ function HomepageMain() {
     return (
         <main
             ref={headerRef}
-            className={clsx('w-full grid grid-cols-7 grid-rows-5')}>
+            className={clsx('w-full grid grid-cols-7 grid-rows-6')}>
             <div
                 className={twMerge('col-start-3 row-start-2 col-end-7 row-end-3 ',
                     'md:col-start-3 md:row-start-2 md:col-end-6  md:row-end-5 flex flex-col justify-center')}>
@@ -38,8 +38,8 @@ function HomepageMain() {
                 </div>
             </div>
             <div className={twMerge(
-                'col-start-1 row-start-3 col-end-7  row-end-6',
-                'md:col-start-5 md:row-start-2 md:col-end-8 md:row-end-6')}>
+                'col-start-1 row-start-4 col-end-7  row-end-7',
+                'md:col-start-5 md:row-start-2 md:col-end-8 md:row-end-7')}>
                 <div className={twMerge('w-full h-full flex flex-col items-center justify-center')}>
                     <ThemedImage
                         sources={{
