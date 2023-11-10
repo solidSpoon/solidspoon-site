@@ -1,28 +1,24 @@
 import clsx from 'clsx';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import useFooter from "@site/src/hooks/useFooter";
-import Image from "@docusaurus/plugin-ideal-image/lib/theme/IdealImage";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {twMerge} from "tailwind-merge";
-import styles from './index.module.css';
-import {useEffect, useRef} from "react";
+import {useLayoutEffect, useRef} from "react";
 import ThemedImage from '@theme/ThemedImage';
-function HomepageMain() {
-    useFooter();
+
+function HomepageHeader() {
     const headerRef = useRef<HTMLHeadElement>();
-    useEffect(() => {
-        const adjusetHeight = () => {
+    useLayoutEffect(() => {
+        const adjustHeight = () => {
             // @ts-ignore
             const navbarHeight = document.querySelector('.navbar').offsetHeight;
             console.log(navbarHeight);
             headerRef.current.style.height = 'calc(100vh - ' + navbarHeight + 'px)';
         }
-        adjusetHeight();
+        adjustHeight();
     }, []);
-    const {siteConfig} = useDocusaurusContext();
     return (
-        <main
+        <header
             ref={headerRef}
             className={clsx('w-full grid grid-cols-7 grid-rows-6')}>
             <div
@@ -48,18 +44,48 @@ function HomepageMain() {
                         }}
                         alt={'logo'}/>
                 </div>
+            </div>
+        </header>
+    );
+}
 
+
+function HomepageMain() {
+    return (
+        <main
+            className={clsx('w-full flex flex-col items-center justify-center gap-4  md:flex-row bg-gray-200 dark:bg-gray-600 py-20 border-[0.5px]')}>
+            <div className={twMerge('h-32 flex flex-col items-center justify-end')}>
+                <ThemedImage
+                    height={'100%'}
+                    sources={{
+                        dark: useBaseUrl('/img/chillingDark.svg'),
+                        light: useBaseUrl('/img/chilling.svg'),
+                    }}
+                    alt={'logo'}/>
+            </div>
+            <div className={twMerge('h-full flex flex-col items-center md:items-start gap-4')}>
+                <div className={twMerge('text-xl')}>
+                    方向是比速度更重要的追求
+                </div>
+                <div
+                    style={{
+                        color: 'var(--ifm-color-primary)',
+                    }}
+                    className={twMerge('font-bold')}>
+                    solidSpoon
+                </div>
             </div>
         </main>
     );
 }
 
 export default function Home(): JSX.Element {
-    const {siteConfig} = useDocusaurusContext();
+    useFooter();
     return (
         <Layout
-            title={`Hello from ${siteConfig.title}`}
-            description="Description will go into a meta tag in <head />">
+            title={`Hide`}
+            description="solidSpoon's site">
+            <HomepageHeader/>
             <HomepageMain/>
         </Layout>
     );
