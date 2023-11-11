@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksolidspoon_site=self.webpackChunksolidspoon_site||[]).push([[3066],{3615:s=>{s.exports=JSON.parse('{"label":"JVM","permalink":"/blog/tags/jvm","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
