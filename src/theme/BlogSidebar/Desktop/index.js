@@ -9,16 +9,16 @@ import {useLocation} from "@docusaurus/router";
 
 export default function BlogSidebarDesktop({sidebar}) {
     const location = useLocation();
+    const outsideRef = React.useRef();
     const currentRef = React.useRef();
     console.log('useRouteContext1', location);
     useEffect(() => {
-        if (currentRef.current) {
-            currentRef.current.scrollIntoView({
+        if (outsideRef.current && currentRef.current) {
+            outsideRef.current.scrollTo({
+                top: currentRef.current.offsetTop - 100,
                 behavior: 'smooth',
-                block: 'nearest',
             });
         }
-
     }, [sidebar])
     const items = useVisibleBlogSidebarItems(sidebar.items);
     return (
@@ -34,6 +34,7 @@ export default function BlogSidebarDesktop({sidebar}) {
                     {sidebar.title}
                 </div>
                 <div
+                    ref={outsideRef}
                     className={twMerge('h-full w-full overflow-y-auto thin-scrollbar')}>
                     <ul className={clsx(styles.sidebarItemList, 'clean-list')}>
                         {items.map((item) => {
