@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksolidspoon_site=self.webpackChunksolidspoon_site||[]).push([[7969],{6104:s=>{s.exports=JSON.parse('{"permalink":"/blog/tags/java","page":1,"postsPerPage":10,"totalPages":1,"totalCount":3,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

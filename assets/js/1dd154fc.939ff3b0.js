@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksolidspoon_site=self.webpackChunksolidspoon_site||[]).push([[2733],{6881:s=>{s.exports=JSON.parse('{"label":"MongoDB","permalink":"/blog/tags/mongo-db","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
