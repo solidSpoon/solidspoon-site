@@ -1,5 +1,5 @@
 .sidebar {
-  height: calc(100vh - (var(--ifm-navbar-height) + 2rem));
+  height: calc(100vh - (var(--ifm-navbar-height) + 4rem));
   overflow-y: hidden;
   position: sticky;
   top: calc(var(--ifm-navbar-height) + 2rem);
