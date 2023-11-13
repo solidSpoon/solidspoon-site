@@ -24,7 +24,7 @@ export default function BlogSidebarDesktop({sidebar}) {
     return (
         <aside className="col col--3">
             <nav
-                className={clsx(styles.sidebar)}
+                className={twMerge(clsx(styles.sidebar), 'flex flex-col')}
                 aria-label={translate({
                     id: 'theme.blog.sidebar.navAriaLabel',
                     message: 'Blog recent posts navigation',
@@ -35,7 +35,7 @@ export default function BlogSidebarDesktop({sidebar}) {
                 </div>
                 <div
                     ref={outsideRef}
-                    className={twMerge('h-full w-full overflow-y-auto thin-scrollbar')}>
+                    className={twMerge('w-full flex-1 overflow-y-auto thin-scrollbar')}>
                     <ul className={clsx(styles.sidebarItemList, 'clean-list')}>
                         {items.map((item) => {
                                 const isActive = location.pathname === item.permalink;
