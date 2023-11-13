@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksolidspoon_site=self.webpackChunksolidspoon_site||[]).push([[6536],{833:s=>{s.exports=JSON.parse('{"label":"\u7b97\u6cd5","permalink":"/blog/tags/\u7b97\u6cd5","allTagsPath":"/blog/tags","count":3,"unlisted":false}')}}]);
