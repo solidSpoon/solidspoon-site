@@ -74,7 +74,7 @@ const config: Config = {
                 //     label: 'Tutorial',
                 // },
                 {
-                    to: '/DashPlayer',
+                    to: '/app/dash-player',
                     label: 'DashPlayer',
                 },
                 {
