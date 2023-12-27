@@ -7,6 +7,7 @@ import Layout from "@theme/Layout";
 import {ContainerScroll} from "@site/src/components/ContainerScroll";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {cn} from "@site/src/utils/cn";
+import Link from "@docusaurus/Link";
 
 const maxWidth = 'max-w-8xl';
 
@@ -39,9 +40,9 @@ export const StickyScroll = ({
     });
 
     const backgroundColors = [
-        "rgb(15 23 42)",
-        "rgb(0 0 0)",
-        "rgb(23 23 23)",
+        "rgba(35,213,171,0.25)",
+        "rgba(231,60,126,0.25)",
+        "rgb(136,164,122)",
     ];
     const linearGradients = [
         "linear-gradient(to bottom right, rgb(6 182 212), rgb(6 212 182))",
@@ -66,7 +67,7 @@ export const StickyScroll = ({
                             animate={{
                                 opacity: activeCard === index ? 1 : 0.3,
                             }}
-                            className="text-2xl font-bold text-slate-100"
+                            className="text-2xl font-bold"
                         >
                             {item.title}
                         </motion.h2>
@@ -77,7 +78,7 @@ export const StickyScroll = ({
                             animate={{
                                 opacity: activeCard === index ? 1 : 0.3,
                             }}
-                            className="text-kg text-slate-300 mt-10 max-w-lg"
+                            className="text-kg mt-10 max-w-lg"
                         >
                             {item.description}
                         </motion.p>
@@ -85,8 +86,8 @@ export const StickyScroll = ({
                 ))}
             </div>
             <div
-                className="h-fit w-[40vw] rounded-md transform -translate-y-1/2 top-1/2 flex items-center justify-center"
-                style={{position: 'sticky', top: '50%'}}
+                className="h-screen w-[40vw] rounded-md transform flex items-center justify-center"
+                style={{position: 'sticky', top: '0'}}
             >
                 <motion.img
                     className={cn('object-contain')}
@@ -142,10 +143,32 @@ const Page = () => {
     return (
         <Layout>
             <div
-                className={'w-full py-[500px] flex flex-col items-center'}>
+                className={'w-full flex flex-col items-center'}>
                 <ContainerScroll
                     header={
-                        <h1 className={twMerge('text-8xl text-gray-500 font-bold text-center')}>DashPlayer</h1>
+                        <div className={twMerge('w-full flex flex-col items-center gap-6 pt-44')}>
+                            <div className={twMerge('w-24 h-24 md:w-32 md:h-32 p-4 mt-24 dark:bg-white rounded-3xl')}>
+                                <img
+                                    className={twMerge('w-full drop-shadow-2xl shadow-black')}
+                                    src={useBaseUrl('/img/dashplayer/logo.png')} alt={'logo'}/>
+                            </div>
+                            <h2 className={twMerge('text-2xl font-bold text-center')}>
+                                一款专为英语学习打造的视频播放器
+                            </h2>
+                            <div className={twMerge('flex gap-2')}>
+                                <Link
+                                    className="button button--primary button--lg"
+                                    to="/docs/dash-player/installation">
+                                    Download
+                                </Link>
+                                <Link
+                                    className="button button--secondary button--lg"
+                                    to="/docs/dash-player/intro">
+                                    Docs
+                                </Link>
+                            </div>
+                            <h1 className={twMerge('text-8xl font-bold text-center')}>DashPlayer</h1>
+                        </div>
                     }
                 >
                     <img
