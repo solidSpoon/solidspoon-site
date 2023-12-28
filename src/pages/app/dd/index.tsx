@@ -8,95 +8,11 @@ import {ContainerScroll} from "@site/src/components/ContainerScroll";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {cn} from "@site/src/utils/cn";
 import Link from "@docusaurus/Link";
+import StickyScroll from "@site/src/components/StickyScroll";
 
 const maxWidth = 'max-w-8xl';
 
 
-export const StickyScroll = ({
-                                 content,
-                             }: {
-    content: {
-        title: string;
-        description: string;
-        image?: string;
-    }[];
-}) => {
-    const [activeCard, setActiveCard] = React.useState(0);
-    const ref = useRef<any>(null);
-    const {scrollYProgress} = useScroll({
-        target: ref,
-    });
-    const cardLength = content.length;
-
-    useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        const cardsBreakpoints = content.map((_, index) => index / cardLength);
-        console.log("Card scroll: ", latest)
-        console.log("Card scroll: ", cardsBreakpoints)
-        cardsBreakpoints.forEach((breakpoint, index) => {
-            if (latest >= breakpoint && latest <= breakpoint + 0.25) {
-                setActiveCard(() => index);
-            }
-        });
-    });
-
-    const backgroundColors = [
-        "rgba(35,213,171,0.25)",
-        "rgba(231,60,126,0.25)",
-        "rgb(136,164,122)",
-    ];
-    const linearGradients = [
-        "linear-gradient(to bottom right, rgb(6 182 212), rgb(6 212 182))",
-        "linear-gradient(to bottom right, rgb(255 45 85), rgb(255 149 0))",
-        "linear-gradient(to bottom right, rgb(255 204 0), rgb(255 45 85))",
-    ];
-    return (
-        <motion.div
-            animate={{
-                backgroundColor: backgroundColors[activeCard % backgroundColors.length],
-            }}
-            className="flex justify-center relative rounded-md px-10"
-            ref={ref}
-        >
-            <div className="div relative flex flex-col items-start px-4">
-                {content.map((item, index) => (
-                    <div key={item.title + index} className="my-20 h-screen flex flex-col items-start justify-center">
-                        <motion.h2
-                            initial={{
-                                opacity: 0,
-                            }}
-                            animate={{
-                                opacity: activeCard === index ? 1 : 0.3,
-                            }}
-                            className="text-2xl font-bold"
-                        >
-                            {item.title}
-                        </motion.h2>
-                        <motion.p
-                            initial={{
-                                opacity: 0,
-                            }}
-                            animate={{
-                                opacity: activeCard === index ? 1 : 0.3,
-                            }}
-                            className="text-kg mt-10 max-w-lg"
-                        >
-                            {item.description}
-                        </motion.p>
-                    </div>
-                ))}
-            </div>
-            <div
-                className="h-screen w-[40vw] rounded-md transform flex items-center justify-center"
-                style={{position: 'sticky', top: '0'}}
-            >
-                <motion.img
-                    className={cn('object-contain')}
-                    alt="screen capture" src={useBaseUrl(content[activeCard].image)}
-                />
-            </div>
-        </motion.div>
-    );
-};
 
 const images = [
     '/img/dashplayer/theme.png',
@@ -140,14 +56,28 @@ const content = [
 ];
 const Page = () => {
     useFooter();
-    return (
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    React.useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => {
+            window.removeEventListener("resize", checkMobile);
+        };
+    }, []);
+
+      return (
         <Layout>
             <div
                 className={'w-full flex flex-col items-center'}>
                 <ContainerScroll
+                    mobile={isMobile}
                     header={
-                        <div className={twMerge('w-full flex flex-col items-center gap-6 pt-44')}>
-                            <div className={twMerge('w-24 h-24 md:w-32 md:h-32 p-4 mt-24 dark:bg-white rounded-3xl')}>
+                        <div className={twMerge('w-full h-full flex flex-col items-center justify-center gap-6')}>
+                            <div className={twMerge('w-24 h-24 md:w-32 md:h-32 p-4 dark:bg-white rounded-3xl')}>
                                 <img
                                     className={twMerge('w-full drop-shadow-2xl shadow-black')}
                                     src={useBaseUrl('/img/dashplayer/logo.png')} alt={'logo'}/>
@@ -167,7 +97,7 @@ const Page = () => {
                                     Docs
                                 </Link>
                             </div>
-                            <h1 className={twMerge('text-8xl font-bold text-center')}>DashPlayer</h1>
+                            <h1 className={twMerge('text-4xl md:text-8xl font-bold text-center')}>DashPlayer</h1>
                         </div>
                     }
                 >
@@ -175,7 +105,9 @@ const Page = () => {
                         className={twMerge('w-full md:max-w-screen-xl rounded-lg drop-shadow-xl shadow-black')}
                         alt="screen capture" src={useBaseUrl('/img/dashplayer/screencapture.png')}/>
                 </ContainerScroll>
-                <StickyScroll content={content}/>
+                <StickyScroll
+                    mobile={isMobile}
+                    content={content}/>
             </div>
         </Layout>
 
