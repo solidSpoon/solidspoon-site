@@ -2,7 +2,7 @@ import React, {useRef} from "react";
 import {motion, useMotionValueEvent, useScroll} from "framer-motion";
 import {cn} from "@site/src/utils/cn";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-
+import Image from "@docusaurus/plugin-ideal-image/lib/theme/IdealImage";
 const StickyScroll = ({
                           content,
                           mobile
@@ -91,9 +91,9 @@ const StickyScroll = ({
                 )}
                 style={{position: 'sticky', top: '0'}}
             >
-                <img
+                <Image
                     className={cn('object-contain')}
-                    alt="screen capture" src={useBaseUrl(content[activeCard].image)}
+                    img="screen capture" src={useBaseUrl(content[activeCard].image)}
                 />
             </div>
         </div>
