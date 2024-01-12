@@ -18,49 +18,49 @@ const content = [
         title: "主页展示播放历史",
         description:
             "启动页会展示您最近播放的视频，随时可继续观看。",
-        image: '/img/dashplayer/home-page.png',
+        image: '/img/dashplayer/home-page.webp',
     },
     {
         title: "单词翻译与字幕翻译",
         description:
             "机器翻译直接明了，易于理解。鼠标悬停在单词上，即可看到翻译，点击单词则可听到发音。",
-        image: '/img/dashplayer/translation.png',
+        image: '/img/dashplayer/translation.jpg',
     },
     {
         title: "随时隐藏字幕",
         description:
             "觉得字幕影响学习？随时可将其隐藏。",
-        image: '/img/dashplayer/hidesubtitle.png',
+        image: '/img/dashplayer/hidesubtitle.jpg',
     },
     {
         title: "文件浏览器中切换视频",
         description:
             "点击右下角的按钮，即可查看播放项目并随时切换。",
-        image: '/img/dashplayer/file-browser.png',
+        image: '/img/dashplayer/file-browser.jpg',
     },
     {
         title: "快捷键操作常用功能",
         description:
             "通过快捷键，您可以使用常用功能，如跳转句子，单句循环，隐藏字幕等。所有快捷键可在设置界面查看。",
-        image: '/img/dashplayer/shortcut.png',
+        image: '/img/dashplayer/shortcut.jpg',
     },
     {
         title: "内置深浅色主题",
         description:
             "内置深色和浅色主题，完美适应您的学习环境。",
-        image: '/img/dashplayer/theme.png',
+        image: '/img/dashplayer/theme.jpg',
     },
     {
         title: "控制中心管理播放器状态",
         description:
             "忘记快捷键也不用担心，点击控制中心即可管理播放器状态。",
-        image: '/img/dashplayer/control-center.png',
+        image: '/img/dashplayer/control-center.jpg',
     },
     {
         title: "单词管理（开发中）",
         description:
             "在播放器中，您可以管理单词，更新单词状态，如已掌握，未掌握，已忽略等。",
-        image: '/img/dashplayer/word-management.png',
+        image: '/img/dashplayer/word-management.jpg',
     },
 ];
 const Page = () => {
@@ -112,7 +112,7 @@ const Page = () => {
                 >
                     <img
                         className={twMerge('w-full md:max-w-screen-xl rounded-lg drop-shadow-xl shadow-black')}
-                        alt="screen capture" src={useBaseUrl('/img/dashplayer/screen-capture.png')}/>
+                        alt="screen capture" src={useBaseUrl('/img/dashplayer/screen-capture.webp')}/>
                 </ContainerScroll>
                 <StickyScroll
                     mobile={isMobile}
@@ -131,7 +131,7 @@ const Page = () => {
                 </div>
                 <Image
                     className={twMerge('w-full max-w-7xl')}
-                    alt="screen capture" img={useBaseUrl('/img/dashplayer/overview.png')}/>
+                    alt="screen capture" img={useBaseUrl('/img/dashplayer/overview.webp')}/>
             </div>
         </Layout>
 
