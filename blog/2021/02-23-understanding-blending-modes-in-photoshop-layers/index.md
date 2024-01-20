@@ -7,15 +7,22 @@ tags: []
 
 ## 前言
 在修图软件中，调整混合模式就可以将两张照片用不同的风格混合在一起
+
 ![](https://ced-md-picture.oss-cn-beijing.aliyuncs.com/img/20210223210643.gif)
+
 上图就是将下面这两个图片用不同的混合模式叠加的效果，那么你有没有想过这是什么原理呢？本文就以几个经典的混合模式为例简单研究一下。
 
-{% gi 2 2 %}
+<table>
+<tr>
+<td>
+<img src="https://ced-md-picture.oss-cn-beijing.aliyuncs.com/img/20210223210706.png" width="100%"/>
+</td>
+<td>
+<img src="https://ced-md-picture.oss-cn-beijing.aliyuncs.com/img/20210223210720.png" width="100%"/>
+</td>
+</tr>
+</table>
 
-![](https://ced-md-picture.oss-cn-beijing.aliyuncs.com/img/20210223210706.png)
-
-![](https://ced-md-picture.oss-cn-beijing.aliyuncs.com/img/20210223210720.png)
-{% endgi %}
 
 
 
@@ -50,13 +57,17 @@ tags: []
 ### 修图就是计算
 到这，你一定能理解，修图软件中的所有操作就是对每个像素点的 RGB 值做计算，比如想要提高一张照片的曝光，那就同时提高每个像素的 RGB 值，这样照片就会变得明亮。如果想提高对比度，那就让较亮的地方的 RGB 更大，较暗的地方 RGB 更小，如下图：
 
-{% gi 2 2 %}
-
+<table>
+<tr>
+<td>
 ![](https://ced-md-picture.oss-cn-beijing.aliyuncs.com/img/20210223212000.png)
-
+</td>
+<td>
 ![](https://ced-md-picture.oss-cn-beijing.aliyuncs.com/img/20210223212013.png)
+</td>
+</tr>
+</table>
 
-{% endgi %}
 
 > 对比度低的照片各像素点的 RGB 值都比较居中，提高对比度后，RGB 值较低（暗）和 RGB 值较高（亮）的像素点变多了。
 
@@ -111,14 +122,14 @@ tags: []
 
 ![](https://ced-md-picture.oss-cn-beijing.aliyuncs.com/img/20210223212214.png)
 
-正片叠底的英文是 Mutiply，跟它的名字一样，用公式表示就是：{% mathjax %}c=a \times b{% endmathjax %}
+正片叠底的英文是 Mutiply，跟它的名字一样，用公式表示就是：$c=a \times b$
 
 
-如果刚才那个扣水印的原理你没有看明白，那就用公式解释一下：白色的值是 1，如果 a 是白色，那么混合之后的结果就是 {% mathjax %}1 \times b=b{% endmathjax %}，因此水印白色背景被扣掉了。
+如果刚才那个扣水印的原理你没有看明白，那就用公式解释一下：白色的值是 1，如果 a 是白色，那么混合之后的结果就是 $1 \times b=b$，因此水印白色背景被扣掉了。
 
 
 如果自己跟自己做正片叠底呢？
-那公式就是 {% mathjax %}c = a ^ 2{% endmathjax %}
+那公式就是 $c = a ^ 2$
 
 图像如下，可见整体变暗了一些，亮度低的地方透明度低，变暗的幅度就比较大。
 
@@ -137,12 +148,12 @@ tags: []
 
 ![](https://ced-md-picture.oss-cn-beijing.aliyuncs.com/img/20210223212335.png)
 
-公式是这样：{% mathjax %}C = 1-\left(1-a\right)\times\left(1-b\right){% endmathjax %}
+公式是这样：$C = 1-\left(1-a\right)\times\left(1-b\right)$
 也很好理解：(1 - a) 和 (1 - b) 代表 a 和 b 的负片，它俩做堆叠（乘法），最后再冲洗成正片（1 - x）
 
 自己叠底自己效果如下曲线
 
-{% mathjax %}c=1-\left(1-a\right)^2{% endmathjax %}
+$c=1-\left(1-a\right)^2$
 
 ![](https://ced-md-picture.oss-cn-beijing.aliyuncs.com/img/20210223212357.png)
 
@@ -154,7 +165,9 @@ tags: []
 叠加模式是「正片叠底」和「滤色」的混合模式，是个分段函数。它的公式如下：
 
 
-{% mathjax %}{f(a, b)}=\left\{\begin{array}{ll}2 a b, & \text { if } a<0.5 \\ 1-2(1-a)(1-b), & \text { otherwise }\end{array}\right.{% endmathjax %}
+$$
+{f(a, b)}=\left\{\begin{array}{ll}2 a b, & \text { if } a<0.5 \\ 1-2(1-a)(1-b), & \text { otherwise }\end{array}\right.
+$$
 
 
 其中，a 是**底下的图层**，b 是上面的图层，就是说
